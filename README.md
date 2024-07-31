@@ -3,7 +3,7 @@
 
 문제 풀이가 완료되는 대로 업데이트 됩니다.
 
-(Collection의 Introduction까지 진행)
+(Collection의 Introduction까지 진행)ㄷ
 
 
 ## 목차
@@ -30,6 +30,9 @@
     5. [Invoke](#35-invoke)
 4. [Collections](#4-collections)
     1. [Introduction](#41-introduction)
+    2. [Sort](#42-sort) 
+    3. [Filter map](#43-filter-map)
+    4. [All Any and other predicates](#44-all-any-and-other-predicates)
 
 ## 1. Introduction
 
@@ -283,4 +286,42 @@ fun invokeTwice(invokable: Invokable) = invokable()()
 ### 4.1. Introduction
 ```kotlin
 fun Shop.getSetOfCustomers(): Set<Customer> = this.customers.toSet()
+```
+
+### 4.2. Sort
+```kotlin
+// Return a list of customers, sorted in the descending by number of orders they have made
+fun Shop.getCustomersSortedByOrders(): List<Customer> =
+customers.sortedByDescending { it.orders.size }
+```
+
+### 4.3. Filter map
+```kotlin
+// Find all the different cities the customers are from
+fun Shop.getCustomerCities(): Set<City> =
+        customers.map { it.city }.toSet()
+
+// Find the customers living in a given city
+fun Shop.getCustomersFrom(city: City): List<Customer> =
+        customers.filter { it.city.equals(city) }
+```
+
+### 4.4. All Any and other predicates
+```kotlin
+// Return true if all customers are from a given city
+fun Shop.checkAllCustomersAreFrom(city: City): Boolean =
+        customers.all { it.city == city } == true
+
+// Return true if there is at least one customer from a given city
+fun Shop.hasCustomerFrom(city: City): Boolean =
+        customers.any { it.city == city } == true
+
+// Return the number of customers from a given city
+fun Shop.countCustomersFrom(city: City): Int =
+        customers.count { it.city == city }
+
+// Return a customer who lives in a given city, or null if there is none
+fun Shop.findCustomerFrom(city: City): Customer? =
+        customers.find { it.city == city }
+
 ```
