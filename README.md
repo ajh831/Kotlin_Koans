@@ -325,3 +325,17 @@ fun Shop.findCustomerFrom(city: City): Customer? =
         customers.find { it.city == city }
 
 ```
+
+### 4.5. Associate
+```kotlin
+// Build a map that stores the customers living in a given city
+fun Shop.groupCustomersByCity(): Map<City, List<Customer>> =
+        customers.groupBy { it.city }
+```
+
+### 4.6. GroupBy
+```kotlin
+// Build a map that stores the customers living in a given city
+fun Shop.groupCustomersByCity(): Map<City, List<Customer>> =
+        customers.groupBy { it.city }
+```
