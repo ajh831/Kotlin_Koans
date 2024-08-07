@@ -33,6 +33,9 @@
     2. [Sort](#42-sort) 
     3. [Filter map](#43-filter-map)
     4. [All Any and other predicates](#44-all-any-and-other-predicates)
+    5. [Associate](#45-associate) 
+    6. [GroupBy](#46-groupby)
+    7. [Partition](#47-partition)
 
 ## 1. Introduction
 
@@ -338,4 +341,14 @@ fun Shop.groupCustomersByCity(): Map<City, List<Customer>> =
 // Build a map that stores the customers living in a given city
 fun Shop.groupCustomersByCity(): Map<City, List<Customer>> =
         customers.groupBy { it.city }
+```
+
+### 4.7. Partition
+```kotlin
+// Return customers who have more undelivered orders than delivered
+fun Shop.getCustomersWithMoreUndeliveredOrders(): Set<Customer> = customers.filter {
+      val (delivered, undelivered) = it.orders.partition { it.isDelivered }
+      delivered.size < undelivered.size
+   }.toSet()
+
 ```
