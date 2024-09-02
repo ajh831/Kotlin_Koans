@@ -1,10 +1,7 @@
 # :sparkles: 코틀린 교안 풀이
 코틀린 교안 문제들의 답안입니다.
 
-문제 풀이가 완료되는 대로 업데이트 됩니다.
-
-(Collection의 Introduction까지 진행)ㄷ
-
+문제 풀이가 완료되는 대로 답안이 업데이트 됩니다.
 
 ## 목차
 1. [Introduction](#1-introduction)
